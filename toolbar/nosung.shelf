@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="out" label="OUT" icon="SOP_output">
+    <toolMenuContext name="network">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.genericTool(kwargs, 'null')
+
+curNode = kwargs['pane'].currentNode()
+
+name = hou.ui.readInput("Output Name", title="OUT")[1]
+name = name.replace(" ", "_")
+
+curNode.setName(name)
+curNode.setDisplayFlag(True)
+curNode.setRenderFlag(True)
+
+print(curNode.position())]]></script>
+  </tool>
+
+  <tool name="import_object" label="Import Object" icon="SOP_object_merge">
+    <toolMenuContext name="network">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'object_merge')
+
+curNode = kwargs['pane'].currentNode()
+
+name = hou.ui.readInput("Import Name", title="Import")[1]
+
+curNode.setName("Import"+"_"+name)
+curNode.setDisplayFlag(True)
+]]></script>
+  </tool>
+
+  <tool name="render_geo" label="Render Geo" icon="ROP_mantra">
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[obj = hou.node("/obj")
+objList = hou.node("obj").children()
+
+newList = []
+selectList = []
+
+for i in objList:
+        if i.type().name() == "geo" and "render_" not in str(i):
+                newList.append(str(i))
+                
+for j in newList:
+        geoChildren = hou.node("/obj/"+j).children()
+        for k in geoChildren:
+                if "null" in str(k.type()):
+                        selectList.append(str(k.path()))
+                        
+path = hou.ui.selectFromTree(selectList, exclusive=True, title="Choose Render Geometry")[0]
+
+geo = obj.createNode("geo")
+geo.setDisplayFlag(0)
+
+geo_name = "_".join(path.split("/")[-1].split("_")[1:])
+
+geo.setName("render_"+"_".join(path.split("/")[-1].split("_")[1:]))
+geo.moveToGoodPosition()
+geo.setColor(hou.Color((0.32,0.26,0.58)))
+
+merge = geo.createNode("object_merge")
+merge.parm("xformtype").set(1)
+merge.parm("objpath1").set(path)
+merge.setName("Import")
+
+out = geo.createNode("null")
+out.setNextInput(merge)
+out.moveToGoodPosition()
+out.setDisplayFlag(1)
+out.setRenderFlag(1)
+out.setName("OUT")
+]]></script>
+  </tool>
+
+  <tool name="hda_copy" label="HDA Copy" icon="SOP_packededit">
+    <script scriptType="python"><![CDATA[node = hou.selectedNodes()
+node[0].allowEditingOfContents()
+
+parm = node[0].parmTemplateGroup()
+
+in_nodes = node[0].children()
+net_path = node[0].parent().path()
+
+name = node[0].name()[:-1]
+
+subnet = hou.node(net_path).createNode("subnet")
+subnet.moveToGoodPosition()
+subnet.setParmTemplateGroup(parm)
+subnet_ptg = subnet.parmTemplateGroup()
+subnet_ptg.hideFolder("Standard", True)
+subnet.setParmTemplateGroup(subnet_ptg)
+
+subnet.setName(name+"_Copy_", True)
+
+copy = hou.copyNodesTo(in_nodes, hou.node(subnet.path()))
+]]></script>
+  </tool>
+
+  <toolshelf name="NS_Tool" label="NS Tool">
+    <memberTool name="out"/>
+    <memberTool name="import_object"/>
+    <memberTool name="render_geo"/>
+    <memberTool name="hda_copy"/>
+    <memberTool name="folder_open"/>
+    <memberTool name="reference_copy"/>
+    <memberTool name="copy_to_read"/>
+    <memberTool name="manage_proj_class"/>
+    <memberTool name="save_class"/>
+  </toolshelf>
+
+  <tool name="folder_open" label="Folder Open" icon="SOP_file">
+    <script scriptType="python"><![CDATA[import os
+
+hip_path = hou.hscriptExpandString('$HIP')
+
+select = hou.selectedNodes()
+
+if len(select) == 0:
+    out_path = hip_path
+else:
+    for i in select[0].parms():
+        if i.name() == 'file':
+            path = i.eval()
+        elif i.name() == 'vm_picture':
+            path = i.eval()
+        else:
+            pass
+            
+    out_path = '/'.join(path.split('/')[:-1])
+
+check_dir = os.path.isdir(out_path)
+
+if check_dir == True:
+    # Windows
+    os.system('start ' + out_path)
+    # Linux
+    os.system('caja ' + out_path)
+    # OS X
+    os.system('open ' + out_path)
+else:
+    hou.ui.displayMessage('í´ëê° ì¡´ì¬íì§ ììµëë¤.')
+]]></script>
+  </tool>
+
+  <toolshelf name="shelf_2" label="New Shelf"/>
+
+  <tool name="reference_copy" label="Reference Copy" icon="TOP_filecopy">
+    <script scriptType="python"><![CDATA[import hou
+
+for n in hou.selectedNodes():
+    
+    # Creating Copy
+    new_n = n.parent().createNode(n.type().name(), '{0}_recopy'.format(n.name()))
+    new_n.setPosition(n.position())
+    new_n.move((0.5, -0.5))
+    new_n.setColor(hou.Color((0.38, 0.4, 0.5)))
+    
+    # Creating source parm
+    group = new_n.parmTemplateGroup()
+    
+    help_text = 'A reference to the source node whose parameters should be referenced by tihs copy'
+    
+    source = hou.StringParmTemplate('ref_source', 'Reference Source', 1, string_type=hou.stringParmType.NodeReference, help=help_text)
+    group.insertBefore((0,), source)
+    
+    new_n.setParmTemplateGroup(group)
+    
+    new_n.parm('ref_source').set(n.path())
+    
+    
+    # Link Parms
+    
+    for p in new_n.parms():
+        if p.name() == 'ref_source':
+            continue
+    
+        if p.parmTemplate().type() == hou.parmTemplateType.Folder or p.parmTemplate().type() == hou.parmTemplateType.FolderSet:
+            continue
+            
+        mode = kwargs['ctrlclick']
+    
+        if mode:
+            # Hscript
+            expr = 'ch'
+            if p.parmTemplate().type() == hou.parmTemplateType.String:
+                expr = 'chs'
+            p.setExpression("{0}(chs('ref_source') + '/{1}')".format(expr, p.name()))
+        else:
+            # Python
+            p.setExpression("hou.node(hou.pwd().evalParm('ref_source')).evalParm('{0}')".format(p.name()), language=hou.exprLanguage.Python)]]></script>
+  </tool>
+
+  <tool name="copy_to_read" label="Copy to Read" icon="COP2_channelcopy">
+    <script scriptType="python"><![CDATA[import os
+import sys
+import hou
+
+user_dir = hou.hscriptExpression('$HOUDINI_USER_PREF_DIR')
+
+# scripts ê²½ë¡ ì¶ê°
+sys.path.append(user_dir + "/scripts/python/Copy_to_Nuke")
+
+import Copy_to_Nuke
+reload(Copy_to_Nuke)]]></script>
+  </tool>
+
+  <tool name="manage_proj_class" label="Manage Proj - Class" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[from project_tool import main as proj
+reload(proj)
+
+proj.manage_proj()]]></script>
+  </tool>
+</shelfDocument>

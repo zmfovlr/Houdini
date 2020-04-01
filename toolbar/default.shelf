@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="save_class" label="Save - Class" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[from save_scene import main as save
+reload(save)
+
+save.save_scene(kwargs=kwargs)]]></script>
+  </tool>
+
+  <shelfSetEdit name="shelf_set_1" fileLocation="C:/PROGRA~1/SIDEEF~1/HOUDIN~1.425/houdini/toolbar/ShelfDefinitions.shelf">
+    <addMemberToolshelf name="NS_Tool" inPosition="16"/>
+  </shelfSetEdit>
+</shelfDocument>
