@@ -1,0 +1,235 @@
+// Magic: 1840b377
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Sat Apr  4 23:25:57 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+xOrd.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+xOrd.gad = NULL { }
+rOrd.gad = NULL { }
+}	// Template join.bot
+
+t.gad = NULL { }
+r.gad = NULL { }
+s.gad = NULL { }
+p.gad = NULL { }
+pr.gad = NULL { }
+scale.gad = NULL { }
+pre_xform.gad = NULL { }
+keeppos.gad = NULL { }
+childcomp.gad = NULL { }
+constraints_on.gad = NULL { }
+constraints_path.gad = NULL { }
+lookatpath.gad = NULL { }
+lookupobjpath.gad = NULL { }
+lookup.gad = NULL { }
+pathobjpath.gad = NULL { }
+roll.gad = NULL { }
+pos.gad = NULL { }
+uparmtype.gad = NULL { }
+pathorient.gad = NULL { }
+up.gad = NULL { }
+bank.gad = NULL { }
+label1.gad = NULL { }
+label2.gad = NULL { }
+label3.gad = NULL { }
+label4.gad = NULL { }
+tdisplay.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tdisplay.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tdisplay.gad = NULL { }
+display.gad = NULL { }
+}	
+}	// Template join.bot
+
+outputobj.gad = NULL { }
+visibleobjects.gad = NULL { }
+picking.gad = NULL { }
+pickscript.gad = NULL { }
+caching.gad = NULL { }
+use_dcolor.gad = NULL { }
+dcolor.gad = NULL { }
+
+sepparm2.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+topnet_init.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+topnet_init.gad = ROW
+{
+    JUSTIFY(left, center)
+
+    PARM_BUTTON("topnet_init", "Topnet Initialize")
+	push VALUE(topnet_init.val);
+
+}
+
+read_button.gad = ROW
+{
+    JUSTIFY(left, center)
+
+    {  }
+    { WIDTH(0.1) }
+
+    PARM_BUTTON("read_button", "Read Info")
+	push VALUE(read_button.val);
+
+}
+}	// Template join.bot
+
+
+sepparm3.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+
+cam_path.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ cam_path.label = PARM_LABEL("Camera Path", "cam_path") WIDTH(1.5);
+ PARM_FIELD (pathstring, "cam_path") LABELREF(cam_path.label) 
+	VALUE(cam_path.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(cam_path.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+}
+
+sepparm.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+
+read_path.parm =
+{
+    LAYOUT(horizontal) SPACING(0.02) HSTRETCH JUSTIFY(left, center)
+
+    PARM_LABEL_SIMPLE("Read Path", "read_path") WIDTH(1.5);
+    { WIDTH(0.08) }
+
+    ROW
+    {
+	HSTRETCH(0.5) JUSTIFY(left, center)  VALUE(read_path.val)
+
+        read_path.field = PARM_FIELD (integer, "read_path")
+				VALUE(read_path.val) HSTRETCH(0.5)
+				 PREF_WIDTH(0.5);
+
+        ROW
+        {
+	     LOOK(lightline) VMARGIN(1p)
+
+   	     INCREMENT_ICONBUTTON VALUE(read_path.more.val)	
+	    	HELP("Add Another Instance") SIZE(0.2, 0.24);
+	     DECREMENT_ICONBUTTON VALUE(read_path.less.val)	
+	        HELP("Remove Last Instance") SIZE(0.2, 0.24);
+
+	}
+
+	ACTION_BUTTON "Clear" VALUE(read_path.clear.val);
+    }
+
+    { HSTRETCH }
+}
+
+read_path.multilist = 
+{
+    LAYOUT(vertical) STRETCH MARGIN(0.05)
+}
+
+read_path.gad =
+{
+    LAYOUT(vertical) STRETCH SPACING(0.02)
+
+    read_path.parm;
+    read_path.multilist;
+}
+text.gad = NULL { }
+title.gad = NULL { }
+user.gad = NULL { }
+time.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH LOOK(plain) 
+    xOrd.row.join; 
+    t.gad; 
+    r.gad; 
+    s.gad; 
+    p.gad; 
+    pr.gad; 
+    scale.gad; 
+    pre_xform.gad; 
+    keeppos.gad; 
+    childcomp.gad; 
+    constraints_on.gad; 
+    constraints_path.gad; 
+    lookatpath.gad; 
+    lookupobjpath.gad; 
+    lookup.gad; 
+    pathobjpath.gad; 
+    roll.gad; 
+    pos.gad; 
+    uparmtype.gad; 
+    pathorient.gad; 
+    up.gad; 
+    bank.gad; 
+    label1.gad; 
+    label2.gad; 
+    label3.gad; 
+    label4.gad; 
+    tdisplay.row.join; 
+    outputobj.gad; 
+    visibleobjects.gad; 
+    picking.gad; 
+    pickscript.gad; 
+    caching.gad; 
+    use_dcolor.gad; 
+    dcolor.gad; 
+    sepparm2.gad; 
+    topnet_init.row.join; 
+    sepparm3.gad; 
+    cam_path.gad; 
+    sepparm.gad; 
+    read_path.gad; 
+    text.gad; 
+    title.gad; 
+    user.gad; 
+    time.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

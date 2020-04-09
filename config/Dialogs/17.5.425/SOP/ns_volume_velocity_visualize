@@ -1,0 +1,97 @@
+// Magic: c3029620
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Tue Apr  7 21:49:29 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+source_attrib.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    source_attrib.label = PARM_LABEL("Source Attribute", "source_attrib") WIDTH(1.5);
+    PARM_FIELD(string, "source_attrib") VALUE(source_attrib.val) 
+	LABELREF(source_attrib.label) HSTRETCH;
+
+    source_attrib.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+}
+
+viz_type.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Visualize Type", "viz_type") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    viz_type.menu;
+
+    { HSTRETCH }
+
+}
+
+orient.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Orientation", "orient") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    orient.menu;
+
+    { HSTRETCH }
+
+}
+
+plane_pos.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ plane_pos.label = PARM_LABEL("Plane Pos", "plane_pos") WIDTH(1.5);
+ PARM(float, 1, "plane_pos", none, none) RANGE(-1,1)
+	 LABELREF(plane_pos.label) HSTRETCH;
+
+}
+
+bound_div.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ bound_div.label = PARM_LABEL("Bound Division", "bound_div") WIDTH(1.5);
+ PARM(float, 1, "bound_div", none, none) RANGE(0,1)
+	 LABELREF(bound_div.label) HSTRETCH;
+
+}
+
+trail_length.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ trail_length.label = PARM_LABEL("Trail Length", "trail_length") WIDTH(1.5);
+ PARM(float, 1, "trail_length", none, none) RANGE(0,10)
+	 LABELREF(trail_length.label) HSTRETCH;
+
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH LOOK(plain) 
+    source_attrib.gad; 
+    viz_type.gad; 
+    orient.gad; 
+    plane_pos.gad; 
+    bound_div.gad; 
+    trail_length.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

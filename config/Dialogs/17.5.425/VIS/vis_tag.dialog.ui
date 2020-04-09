@@ -1,0 +1,344 @@
+// Magic: e0f71576
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Fri Apr  3 23:01:02 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+tagstyle.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Style", "tagstyle") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    tagstyle.menu;
+
+    { HSTRETCH }
+
+}
+
+textsource.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Text Source", "textsource") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    textsource.menu;
+
+    { HSTRETCH }
+
+}
+
+tagstring.gad = ROW
+{
+
+    HSTRETCH JUSTIFY(left, top)
+
+    tagstring.label = PARM_LABEL("Tag String", "tagstring");
+
+    MULTILINE_PARM_FIELD ("tagstring") 
+
+    	LABELREF(tagstring.label) 
+
+    	VALUE(tagstring.val) 
+    	SYNTAX("") 
+    	LINES(8,40) 
+    	HSTRETCH;
+
+    {
+
+	LAYOUT(vertical)
+	{
+	    SIZE(0, 0.26)
+	}
+
+    }
+
+}
+
+attrib.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    attrib.label = PARM_LABEL("Attribute", "attrib") WIDTH(1.5);
+    PARM_FIELD(string, "attrib") VALUE(attrib.val) 
+	LABELREF(attrib.label) HSTRETCH;
+
+}
+
+iconsource.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Icon Source", "iconsource") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    iconsource.menu;
+
+    { HSTRETCH }
+
+}
+
+tagicon.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+ tagicon.label = PARM_LABEL("Icon File", "tagicon") WIDTH(1.5);
+
+ PARM_FIELD (pathstring, "tagicon") LABELREF(tagicon.label)
+	VALUE(tagicon.val) HSTRETCH;
+
+    tagicon.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(tagicon.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+}
+
+placement.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+
+    PARM_LABEL_SIMPLE("Preferred Placement", "placement") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    placement.menu;
+
+    { HSTRETCH }
+
+}
+
+allowselection.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("allowselection", "Allow Selecting Object by Clicking on Tag") toggle VALUE(allowselection.val);
+
+    { HSTRETCH }
+
+}
+
+shownwhenoffscreen.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("shownwhenoffscreen", "Keep Tag In Viewport") toggle VALUE(shownwhenoffscreen.val);
+
+    { HSTRETCH }
+
+}
+
+icononlywhenoffscreen.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("icononlywhenoffscreen", "Show Icon Only") toggle VALUE(icononlywhenoffscreen.val);
+
+    { HSTRETCH }
+
+}
+
+font.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+ font.label = PARM_LABEL("Font", "font") WIDTH(1.5);
+
+ PARM_FIELD (pathstring, "font") LABELREF(font.label)
+	VALUE(font.val) HSTRETCH;
+
+    font.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(font.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+}
+
+fontsize.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ fontsize.label = PARM_LABEL("Font Size", "fontsize") WIDTH(1.5);
+ PARM(integer, 1, "fontsize", none, none) RANGE(6,24)
+	LOCK_RANGE LABELREF(fontsize.label) HSTRETCH;
+
+}
+
+iconsize.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ iconsize.label = PARM_LABEL("Icon Size", "iconsize") WIDTH(1.5);
+ PARM(integer, 1, "iconsize", none, none) RANGE(6,64)
+	LOCK_RANGE LABELREF(iconsize.label) HSTRETCH;
+
+}
+
+textcolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+
+    textcolor.label = PARM_LABEL("Text Color", "textcolor") WIDTH(1.5);
+    PARM(float, 4, "textcolor", none, COLOR, "R,G,B,A") 
+	LABELREF(textcolor.label) HSTRETCH;
+
+}
+
+showframe.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("showframe", "Show Bounding Box of Tagged Object") toggle VALUE(showframe.val);
+
+    { HSTRETCH }
+
+}
+
+framecolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+
+    framecolor.label = PARM_LABEL("Box Color", "framecolor") WIDTH(1.5);
+    PARM(float, 4, "framecolor", none, COLOR, "R,G,B,A") 
+	LABELREF(framecolor.label) HSTRETCH;
+
+}
+
+showpanel.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("showpanel", "Show Back Panel") toggle VALUE(showpanel.val);
+
+    { HSTRETCH }
+
+}
+
+panelcolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+
+    panelcolor.label = PARM_LABEL("Back Panel Color", "panelcolor") WIDTH(1.5);
+    PARM(float, 4, "panelcolor", none, COLOR, "R,G,B,A") 
+	LABELREF(panelcolor.label) HSTRETCH;
+
+}
+
+cornerrad.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ cornerrad.label = PARM_LABEL("Corner Radius", "cornerrad") WIDTH(1.5);
+ PARM(integer, 1, "cornerrad", none, none) RANGE(0,30)
+	LOCK_RANGE LABELREF(cornerrad.label) HSTRETCH;
+
+}
+
+padding.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ padding.label = PARM_LABEL("Padding", "padding") WIDTH(1.5);
+ PARM(integer, 1, "padding", none, none) RANGE(0,30)
+	LOCK_RANGE LABELREF(padding.label) HSTRETCH;
+
+}
+
+placementsection.gad = 
+GROUP simple "When Object Off-Screen"
+{ 
+    VALUE(placementsection.gad.val) LAYOUT(vertical) HSTRETCH 
+	    shownwhenoffscreen.gad;		
+	    icononlywhenoffscreen.gad;		
+} 
+
+tabs.gad = 
+{
+    LAYOUT(vertical) HSTRETCH
+
+    TABDIALOG2 "tabs.gad"
+    { 
+	VALUE(tabs.gad.val) STRETCH(1,0)
+
+	TAB "Contents"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+	    tagstyle.gad;		
+	    textsource.gad;		
+	    tagstring.gad;		
+	    attrib.gad;		
+	    iconsource.gad;		
+	    tagicon.gad;		
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+
+	TAB "Behaviour"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+	    placement.gad;		
+	    allowselection.gad;		
+	    placementsection.gad;		
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+
+	TAB "Appearance"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+	    font.gad;		
+	    fontsize.gad;		
+	    iconsize.gad;		
+	    textcolor.gad;		
+	    showframe.gad;		
+	    framecolor.gad;		
+	    showpanel.gad;		
+	    panelcolor.gad;		
+	    cornerrad.gad;		
+	    padding.gad;		
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+    } 
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH LOOK(plain) 
+    tabs.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

@@ -15,7 +15,7 @@ objecttoolutils.genericTool(kwargs, 'null')
 
 curNode = kwargs['pane'].currentNode()
 
-name = hou.ui.readInput("Output Name", title="OUT")[1]
+name = 'OUT_' + hou.ui.readInput("Output Name", title="OUT")[1]
 name = name.replace(" ", "_")
 
 curNode.setName(name)

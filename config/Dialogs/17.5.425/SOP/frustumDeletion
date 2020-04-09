@@ -1,0 +1,713 @@
+// Magic: fa618d95
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Wed Apr  8 22:53:43 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+deleteOutside.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+deleteOutside.gad = ROW
+{
+    
+
+    PARM_BUTTON("deleteOutside", "Delete Outside") toggle VALUE(deleteOutside.val);
+
+    {  }
+
+}
+
+sepparm2.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+}	// Template join.bot
+
+
+cam.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ cam.label = PARM_LABEL("cam", "cam") WIDTH(1.5);
+ PARM_FIELD (pathstring, "cam") LABELREF(cam.label) 
+	VALUE(cam.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(cam.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+}
+
+overScanX.sval := 1;
+
+overScanX.gad = 
+{
+    LAYOUT(vertical) SPACING(1p) HSTRETCH VMARGIN(0.05, 0)
+
+    SWITCHER tight
+    {
+	VALUE(overScanX.sval) HSTRETCH
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+	    LABEL "Overscan X" HSTRETCH;
+
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[11]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[12]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[13]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[13]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[14]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan X":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanX.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[13]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[14]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanX.val[15]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+    }
+}
+overScanXMin.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+overScanXMin.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "overScanXMin", none, none) RANGE(-1,0)
+	 HSTRETCH;
+
+}
+
+overScanXMax.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "overScanXMax", none, none) RANGE(0,1)
+	 HSTRETCH;
+
+}
+}	// Template join.bot
+
+
+overScanY.sval := 1;
+
+overScanY.gad = 
+{
+    LAYOUT(vertical) SPACING(1p) HSTRETCH VMARGIN(0.05, 0)
+
+    SWITCHER tight
+    {
+	VALUE(overScanY.sval) HSTRETCH
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+	    LABEL "Overscan Y" HSTRETCH;
+
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[11]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[12]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[13]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[13]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[14]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+        {
+            LAYOUT(horizontal) HSTRETCH
+
+            LABEL "Overscan Y":1.5 JUSTIFY(right, center);
+
+            LABEL VALUE(overScanY.val[0]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[1]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[2]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[3]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[4]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[5]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[6]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[7]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[8]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[9]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[10]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[11]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[12]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[13]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[14]) JUSTIFY(center,center) HSTRETCH;
+            LABEL VALUE(overScanY.val[15]) JUSTIFY(center,center) HSTRETCH;
+        }
+
+    }
+}
+overScanYMin.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+overScanYMin.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "overScanYMin", none, none) RANGE(-1,0)
+	 HSTRETCH;
+
+}
+
+overScanYMax.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "overScanYMax", none, none) RANGE(0,1)
+	 HSTRETCH;
+
+}
+}	// Template join.bot
+
+useZDepth.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+useZDepth.gad = ROW
+{
+    
+
+    PARM_BUTTON("useZDepth", "useZDepth") toggle VALUE(useZDepth.val);
+
+    {  }
+
+}
+
+sepparm.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+}	// Template join.bot
+
+zDepthMin.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+zDepthMin.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "zDepthMin", none, none) RANGE(0,250)
+	 HSTRETCH;
+
+}
+
+zDepthMax.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "zDepthMax", none, none) RANGE(0,250)
+	 HSTRETCH;
+
+}
+}	// Template join.bot
+
+
+zDepthFoler.gad = 
+GROUP simple "ZDepth"
+{ 
+    VALUE(zDepthFoler.gad.val) LAYOUT(vertical) HSTRETCH 
+	    useZDepth.row.join;		
+	    zDepthMin.row.join;		
+} 
+
+overScanFoler.gad = 
+GROUP simple "Overscan"
+{ 
+    VALUE(overScanFoler.gad.val) LAYOUT(vertical) HSTRETCH 
+	    overScanX.gad;		
+	    overScanXMin.row.join;		
+	    overScanY.gad;		
+	    overScanYMin.row.join;		
+} 
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH LOOK(plain) 
+    deleteOutside.row.join; 
+    cam.gad; 
+    overScanFoler.gad; 
+    zDepthFoler.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

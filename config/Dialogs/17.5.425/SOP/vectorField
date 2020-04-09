@@ -1,0 +1,480 @@
+// Magic: e209260c
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Wed Apr  8 21:37:24 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+showVectorField.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+showVectorField.gad = ROW
+{
+    
+
+    PARM_BUTTON("showVectorField", "Show Vector Field") toggle VALUE(showVectorField.val);
+
+    {  }
+
+}
+
+sepparm3.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+}	// Template join.bot
+
+vectorAttrib.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+vectorAttrib.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    vectorAttrib.label = PARM_LABEL("Vector Attribute", "vectorAttrib") WIDTH(1.5);
+    PARM_FIELD(string, "vectorAttrib") VALUE(vectorAttrib.val) 
+	LABELREF(vectorAttrib.label) HSTRETCH;
+
+}
+
+combineOption.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+
+    combineOption.menu;
+
+    {  }
+
+}
+}	// Template join.bot
+
+
+ctrOffset.gad = ROW
+{
+   HSTRETCH
+
+   ctrOffset.label = PARM_LABEL("ctrOffset", "ctrOffset") WIDTH(1.5);
+   PARM(float, 3, "ctrOffset", none, none, "X,Y,Z")
+	RANGE(-1,1)  LABELREF(ctrOffset.label)
+	HSTRETCH;
+
+}
+useAxis.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+useAxis.gad = ROW
+{
+    
+
+    PARM_BUTTON("useAxis", "Use Axis") toggle VALUE(useAxis.val);
+
+    {  }
+
+}
+
+angle0.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ angle0.label = PARM_LABEL("angle0", "angle0") ;
+ PARM(float, 1, "angle0", none, none) RANGE(0,360)
+	 LABELREF(angle0.label) HSTRETCH;
+
+}
+
+angle1.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ angle1.label = PARM_LABEL("angle1", "angle1") ;
+ PARM(float, 1, "angle1", none, none) RANGE(-90,90)
+	 LABELREF(angle1.label) HSTRETCH;
+
+}
+}	// Template join.bot
+
+freq.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+freq.gad = ROW
+{
+   HSTRETCH
+
+   freq.label = PARM_LABEL("Frequency", "freq") WIDTH(1.5);
+   PARM(float, 3, "freq", none, none, "X,Y,Z")
+	RANGE(-1,1)  LABELREF(freq.label)
+	HSTRETCH;
+
+}
+
+freqT.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "freqT", none, none) RANGE(0,10)
+	 HSTRETCH;
+
+}
+}	// Template join.bot
+
+offset.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+offset.gad = ROW
+{
+   HSTRETCH
+
+   offset.label = PARM_LABEL("Offset", "offset") WIDTH(1.5);
+   PARM(float, 3, "offset", none, none, "X,Y,Z")
+	RANGE(-1,1)  LABELREF(offset.label)
+	HSTRETCH;
+
+}
+
+offsetT.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ PARM(float, 1, "offsetT", none, none) RANGE(0,10)
+	 HSTRETCH;
+
+}
+}	// Template join.bot
+
+reverseDirection.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+reverseDirection.gad = ROW
+{
+    
+
+    PARM_BUTTON("reverseDirection", "Reverse Direction") toggle VALUE(reverseDirection.val);
+
+    {  }
+
+}
+
+sepparm.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+}	// Template join.bot
+
+
+magMult.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ magMult.label = PARM_LABEL("Mag Mult", "magMult") WIDTH(1.5);
+ PARM(float, 1, "magMult", none, none) RANGE(0,10)
+	 LABELREF(magMult.label) HSTRETCH;
+
+}
+
+magAnim.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ magAnim.label = PARM_LABEL("Mag Anim", "magAnim") WIDTH(1.5);
+ PARM(float, 1, "magAnim", none, none) RANGE(0,1)
+	 LABELREF(magAnim.label) HSTRETCH;
+
+}
+useDistControl.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+useDistControl.gad = ROW
+{
+    
+
+    PARM_BUTTON("useDistControl", "Use Distance") toggle VALUE(useDistControl.val);
+
+    {  }
+
+}
+
+sepparm2.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH 
+
+    { HEIGHT(0.1) }
+    SEPARATOR; 
+    { HEIGHT(0.1) }
+}
+}	// Template join.bot
+
+distMax.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+distMax.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+
+ distMax.label = PARM_LABEL("Max Distance", "distMax") WIDTH(1.5);
+ PARM(float, 1, "distMax", none, none) RANGE(0,10)
+	 LABELREF(distMax.label) HSTRETCH;
+
+}
+
+getDistMax.gad = ROW
+{
+    JUSTIFY(left, center)
+
+    {  }
+    { WIDTH(0.1) }
+
+    PARM_BUTTON("getDistMax", "Get Max Distance")
+	push VALUE(getDistMax.val);
+
+}
+}	// Template join.bot
+
+
+magDistLookup.si_rampedit = FLOAT_RAMP VALUE(magDistLookup.ramp_val)
+			LAYOUT(horizontal)  HSTRETCH;
+
+magDistLookup.multiramp = 
+{
+    LAYOUT(vertical) STRETCH
+
+    ROW
+    {
+	LOOK(plain) JUSTIFY(left,center) SPACING(0.1) VMARGIN(0.02) HSTRETCH
+
+	COL
+	{
+	    JUSTIFY(right,center) WIDTH(1.5)
+	    LABEL "Point No.";
+	}
+
+	magDistLookup.pointno.gad
+	    = INT_SLIDER_FIELD VALUE(magDistLookup.pointno.val) HSTRETCH;
+    }
+}
+
+magDistLookup.buttons.gad = COL
+{
+    VSTRETCH
+
+    ICON_BUTTON_STRIP
+    {
+	LAYOUT(horizontal) INITSIZE(20p, 20p) 
+
+	ACTION_ICONBUTTON "BUTTONS_delete"
+		HELP("Remove Point") VALUE(magDistLookup.delpoint.val);
+	ACTION_ICONBUTTON "BUTTONS_add"
+		HELP("Add Point") VALUE(magDistLookup.addpoint.val);
+    }
+
+    { VSTRETCH }
+
+    ROW
+    {
+	    magDistLookup.toggleparms.gad
+	      = ACTION_ICONBUTTON "BUTTONS_show_controls"
+		HELP("Hide Controls")
+		VALUE(magDistLookup.toggle.val)
+		SENDSKEY("h.pane.parms.toggle_ramp_parms")
+		LOOKFLAT UI_FLAT_ICON_BTN_SIZE_TINY;
+
+	    magDistLookup.togglerampsize.gad
+	      = ACTION_ICONBUTTON "BUTTONS_restore_mini"
+		HELP("Maximize ramp")
+		VALUE(magDistLookup.togglerampsize.val)
+		SENDSKEY("h.pane.parms.toggle_ramp_size")
+		LOOKFLAT UI_FLAT_ICON_BTN_SIZE_TINY;
+    }
+}
+
+magDistLookup.parm =
+{
+    LAYOUT(vertical) HSTRETCH JUSTIFY(left, center)
+
+    magDistLookup.ramp.gad = ROW
+    {
+	MARGIN(0.02) SPACING(0.02) JUSTIFY(left, top) HSTRETCH
+
+	magDistLookup.buttons.gad VSTRETCH;
+
+	magDistLookup.si_rampedit HSTRETCH;
+    }
+}
+
+magDistLookup.gad =
+{
+    LAYOUT(vertical) MARGIN(2p) HSTRETCH
+
+    {
+	LAYOUT(horizontal) HSTRETCH
+
+	PARM_LABEL_SIMPLE("Mag Dist Lookup", "magDistLookup");
+
+	{ HSTRETCH }
+
+    }
+
+    {
+	LAYOUT(vertical) MARGIN(2p) SPACING(0.02) LOOK(darkline) HSTRETCH
+
+	magDistLookup.parm;
+
+	SWITCHER tight
+	{
+	    LAYOUT(overlap) VALUE(magDistLookup.hideparms.val) HSTRETCH
+	    magDistLookup.multiramp;
+	    {}
+	}
+    }
+}
+hide.gad = NULL { }
+
+isSecondInputConnected.gad = ROW
+{
+    HSTRETCH
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("isSecondInputConnected", "isSecondInputConnected") toggle VALUE(isSecondInputConnected.val);
+
+    { HSTRETCH }
+
+}
+
+pivot.gad = ROW
+{
+   HSTRETCH
+
+   pivot.label = PARM_LABEL("pivot", "pivot") WIDTH(1.5);
+   PARM(float, 3, "pivot", none, none, "X,Y,Z")
+	RANGE(-1,1)  LABELREF(pivot.label)
+	HSTRETCH;
+
+}
+
+dirMag.gad = 
+GROUP simple "Direction Magnitude"
+{ 
+    VALUE(dirMag.gad.val) LAYOUT(vertical) HSTRETCH 
+	    reverseDirection.row.join;		
+	    magMult.gad;		
+	    magAnim.gad;		
+	    useDistControl.row.join;		
+	    distMax.row.join;		
+	    magDistLookup.gad;		
+} 
+
+noise.gad = 
+GROUP simple "Noise"
+{ 
+    VALUE(noise.gad.val) LAYOUT(vertical) HSTRETCH 
+	    freq.row.join;		
+	    offset.row.join;		
+} 
+
+guide.gad = 
+GROUP simple "Guide"
+{ 
+    VALUE(guide.gad.val) LAYOUT(vertical) HSTRETCH 
+	    ctrOffset.gad;		
+	    useAxis.row.join;		
+} 
+
+attrib.gad = 
+GROUP simple "Attribute"
+{ 
+    VALUE(attrib.gad.val) LAYOUT(vertical) HSTRETCH 
+	    vectorAttrib.row.join;		
+} 
+
+fieldSelector.gad = 
+{
+    LAYOUT(vertical) HSTRETCH
+
+    { LOOK(none) SIZE(0, 0.05) }	
+
+    TABDIALOG radio
+    { 
+	VALUE(fieldSelector.gad.val) STRETCH(1,0)
+
+	TAB "explode"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+
+	TAB "vortex"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+
+	TAB "direction"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+
+	TAB "noise"
+	{
+	    LAYOUT(vertical) STRETCH
+
+	    MARGIN(0.05) SPACING(2p)
+
+	    { STRETCH(1,1) LOOK(plain) }
+	}
+    } 
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH LOOK(plain) 
+    fieldSelector.gad; 
+    showVectorField.row.join; 
+    attrib.gad; 
+    guide.gad; 
+    noise.gad; 
+    dirMag.gad; 
+    hide.gad; 
+    isSecondInputConnected.gad; 
+    pivot.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}
