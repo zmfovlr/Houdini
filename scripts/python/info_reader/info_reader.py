@@ -29,7 +29,6 @@ houdini_os = hou.hscriptExpression("$HOUDINI_OS")
 def convert_path(path):
     if 'window' in houdini_os.lower():
         repath = path.replace('/', '\\\\')
-        # override_path = repath.replace('\\\\', '\\')
     else:
         repath = path
 

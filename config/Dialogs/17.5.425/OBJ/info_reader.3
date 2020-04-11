@@ -1,0 +1,33 @@
+// Magic: e6420878
+// Automatically generated PSI dialog (PSI version 17.5.425)
+// Sat Apr 11 14:44:36 2020
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+tdisplay.row.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tdisplay.join =		
+{
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tdisplay.gad = NULL { }
+display.gad = NULL { }
+}	
+}	// Template join.bot
+
+outputobj.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(horizontal) SPACING(0.05) HSTRETCH  JUSTIFY(left, center)
+    tdisplay.row.join; 
+    outputobj.gad; 
+} 
+// dialog.bot.ui
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) VALUE(open.val) HSTRETCH
+
+    dialog_norm.gad;
+}

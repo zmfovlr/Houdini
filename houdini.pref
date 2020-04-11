@@ -1,4 +1,4 @@
-allowadaptivesubd.val := 1;
+allowadaptivesubd.val := 0;
 altkeyviewcontrols.val := 1;
 alwayscommitparm.val := 0;
 anim.addedfunc.val := "";
