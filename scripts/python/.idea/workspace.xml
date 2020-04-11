@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5099d39-5faf-467b-a3e1-995101cd5db8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../config/Icons/SVGIcons.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/Icons/SVGIcons.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../config/Icons/SVGIcons.cache.serial" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/Icons/SVGIcons.cache.serial" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../dso.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../dso.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../file.history" beforeDir="false" afterPath="$PROJECT_DIR$/../../file.history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../font.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../font.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hcomposite.pref" beforeDir="false" afterPath="$PROJECT_DIR$/../../hcomposite.pref" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../houdini.pref" beforeDir="false" afterPath="$PROJECT_DIR$/../../houdini.pref" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info_reader/info_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/info_reader/info_reader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../toolbar/default.shelf" beforeDir="false" afterPath="$PROJECT_DIR$/../../toolbar/default.shelf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../wingeo.pref" beforeDir="false" afterPath="$PROJECT_DIR$/../../wingeo.pref" afterDir="false" />
-    </list>
+    <list default="true" id="e5099d39-5faf-467b-a3e1-995101cd5db8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
