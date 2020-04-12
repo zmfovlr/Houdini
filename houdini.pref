@@ -1,6 +1,6 @@
 allowadaptivesubd.val := 0;
 altkeyviewcontrols.val := 1;
-alwayscommitparm.val := 0;
+alwayscommitparm.val := 1;
 anim.addedfunc.val := "";
 anim.autofunc.val := 1;
 anim.autokeytuples.val := 0;

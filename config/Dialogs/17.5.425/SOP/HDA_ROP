@@ -1,6 +1,6 @@
-// Magic: 239ec4a3
+// Magic: 8c583e6b
 // Automatically generated PSI dialog (PSI version 17.5.425)
-// Fri Apr 10 00:15:56 2020
+// Sun Apr 12 00:19:59 2020
 
 
 f_tmp = FLOAT_FIELD;	// dialog.top.ui
@@ -533,49 +533,49 @@ hipfile_error.gad = ROW
 
 }
 
-folder5.parm =
+watchlist_parms.parm =
 {
     LAYOUT(horizontal) SPACING(0.02) HSTRETCH JUSTIFY(left, center)
 
-    PARM_LABEL_SIMPLE("Watch List Parameters", "folder5") WIDTH(1.5);
+    PARM_LABEL_SIMPLE("Watch List Parameters", "watchlist_parms") WIDTH(1.5);
     { WIDTH(0.08) }
 
     ROW
     {
-	HSTRETCH(0.5) JUSTIFY(left, center)  VALUE(folder5.val)
+	HSTRETCH(0.5) JUSTIFY(left, center)  VALUE(watchlist_parms.val)
 
-        folder5.field = PARM_FIELD (integer, "folder5")
-				VALUE(folder5.val) HSTRETCH(0.5)
+        watchlist_parms.field = PARM_FIELD (integer, "watchlist_parms")
+				VALUE(watchlist_parms.val) HSTRETCH(0.5)
 				 PREF_WIDTH(0.5);
 
         ROW
         {
 	     LOOK(lightline) VMARGIN(1p)
 
-   	     INCREMENT_ICONBUTTON VALUE(folder5.more.val)	
+   	     INCREMENT_ICONBUTTON VALUE(watchlist_parms.more.val)	
 	    	HELP("Add Another Instance") SIZE(0.2, 0.24);
-	     DECREMENT_ICONBUTTON VALUE(folder5.less.val)	
+	     DECREMENT_ICONBUTTON VALUE(watchlist_parms.less.val)	
 	        HELP("Remove Last Instance") SIZE(0.2, 0.24);
 
 	}
 
-	ACTION_BUTTON "Clear" VALUE(folder5.clear.val);
+	ACTION_BUTTON "Clear" VALUE(watchlist_parms.clear.val);
     }
 
     { HSTRETCH }
 }
 
-folder5.multilist = 
+watchlist_parms.multilist = 
 {
     LAYOUT(vertical) STRETCH MARGIN(0.05)
 }
 
-folder5.gad =
+watchlist_parms.gad =
 {
     LAYOUT(vertical) STRETCH SPACING(0.02)
 
-    folder5.parm;
-    folder5.multilist;
+    watchlist_parms.parm;
+    watchlist_parms.multilist;
 }
 
 sepparm8.gad = 
@@ -1866,7 +1866,7 @@ folder4.gad =
 GROUP simple "Watchlist"
 { 
     VALUE(folder4.gad.val) LAYOUT(vertical) HSTRETCH 
-	    folder5.gad;		
+	    watchlist_parms.gad;		
 } 
 
 folder2.gad = 

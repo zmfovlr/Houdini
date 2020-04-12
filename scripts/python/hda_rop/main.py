@@ -1,6 +1,7 @@
 import hou
 import os
 import re
+import json
 from utility_scripts import main as util
 reload(util)
 
@@ -91,9 +92,124 @@ def latest_version(kwargs):
     return
 
 
+def watchlist_val_parm(node_num, parm_num):
+    node = hou.parm('watch_node_{0}'.format(node_num)).evalAsNode()
+    parm_name = hou.evalParm('watch_parm_{0}_{1}'.format(node_num, parm_num))
+    watch_parm = node.parm(parm_name)
+
+    if not watch_parm:
+        return
+
+    has_keyframe = len(watch_parm.keyframes()) > 0
+
+    try:
+        watch_parm.expression()
+        is_expr = True
+    except hou.OperationFailed:
+        is_expr = False
+
+    if has_keyframe and not is_expr:
+        return '<< Animated Parameter >>'
+    elif has_keyframe and is_expr:
+        return '<< Expression >>'
+    else:
+        return watch_parm.evalAsString()
+
+
+def watchlist_action(kwargs):
+    node = kwargs['node']
+
+    parent_num = kwargs['script_multiparm_index2']
+    parent_parm = node.parm('watch_node_{0}'.format(parent_num))
+    parent_node = parent_parm.evalAsNode()
+
+    if not parent_node:
+        util.error('Invalid node selected')
+        return
+
+    parm_list = []
+    for p in parent_node.parms():
+        template = p.parmTemplate()
+        parm_type = template.type()
+        if parm_type == hou.parmTemplateType.Folder or parm_type == hou.parmTemplateType.FolderSet:
+            continue
+
+        parm_list.append(p)
+
+    tree_list = []
+    for p in parm_list:
+        hierarchy = list(p.containingFolders())
+        hierarchy.append('{0} ({1})'.format(p.parmTemplate().label(), p.name()))
+        tree_list.append('/'.join(hierarchy))
+
+    choice = hou.ui.selectFromTree(tree_list, exclusive=True, message='Select a parameter to watch',
+                                   title='Watchlist Select', clear_on_cancel=True)
+    if len(choice) > 0:
+        idx = tree_list.index(choice[0])
+        parm = parm_list[idx]
+
+        val_parm = kwargs['parmtuple'][0]
+        name_parm = node.parm(val_parm.name()[:-4])
+        name_parm.set(parm.name())
+
+    return
+
+
+
+def watchlist_write():
+    def set_string_attrib(attrib_name, attrib_val):
+        if not geo.findGlobalAttrib(attrib_name):
+            geo.addAttrib(hou.attribType.Global, attrib_name, '', create_local_variable=False)
+        geo.setGlobalAttribValue(attrib_name, attrib_val)
+
+
+    node = hou.pwd()
+    parent = node.parent()
+    geo = node.geometry()
+
+
+    watch_metadata = {}
+    num_watch_nodes = parent.evalParm('watchlist_parms')
+    for n in range(num_watch_nodes):
+        watch_node = parent.parm('watch_node_{0}'.format(n+1)).evalAsNode()
+
+        if not watch_node:
+            continue
+        watch_node_path = watch_node.path()
+
+        watch_metadata[watch_node_path] = {}
+
+        num_watch_parms = parent.evalParm('watch_parms_{0}'.format(n+1))
+        for p in range(num_watch_parms):
+            key = parent.evalParm('watch_parm_{0}_{1}'.format(n+1, p+1))
+
+            watch_parm = hou.parm('{0}/{1}'.format(watch_node_path, key))
+            if not watch_parm:
+                continue
+
+            has_keyframe = len(watch_parm.keyframes()) > 0
+
+            try:
+                watch_parm.expression()
+                is_expr = True
+            except hou.OperationFailed:
+                is_expr = False
+
+            if has_keyframe and not is_expr:
+                val = ('<< Animated Parameter >>', '<< Animated Parameter >>')
+            else:
+                val = (watch_parm.eval(), watch_parm.evalAsString())
+
+            watch_metadata[watch_node_path][key] = val
+
+    _watch_metadata = json.dumps(watch_metadata)
+    set_string_attrib('watchlist', _watch_metadata)
+
+    return
+
+
 
 def prerender(node):
-    # print('prerender')
     auto_version(node.parent())
 
     return
