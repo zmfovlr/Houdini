@@ -2,6 +2,7 @@ import hou
 import os
 import re
 import json
+import shutil
 from utility_scripts import main as util
 reload(util)
 
@@ -208,9 +209,121 @@ def watchlist_write():
     return
 
 
+def watchlist_read(kwargs):
+    def lock_parms(val):
+        for p in node.parms():
+            if p.name().startswith('read_') and p.name().endswith('_val'):
+                p.lock(val)
+
+
+    node = kwargs['node']
+    read_node = node.node('READ_METADATA')
+    geo = read_node.geometry()
+
+    if not geo or not node.evalParm('load'):
+        watchlist_dict = {}
+    else:
+        try:
+            watchlist = geo.attribValue('watchlist')
+            watchlist_dict = json.loads(watchlist)
+        except hou.OperationFailed:
+            watchlist_dict = {}
+
+
+    lock_parms(False)
+
+    num_keys = len(watchlist_dict.keys())
+    node.parm('read_watchlist_parms').set(num_keys)
+
+    for i, (k, v) in enumerate(watchlist_dict.items()):
+        node.parm('read_watch_node_{0}'.format(i+1)).set(k)
+
+        num_parm_keys = len(v.keys())
+        node.parm('read_watch_parms_{0}'.format(i+1)).set(num_parm_keys)
+
+        for i2, (k2, v2) in enumerate(v.items()):
+            node.parm('read_watch_parm_{0}_{1}'.format(i+1, i2+1)).set(k2)
+            node.parm('read_watch_parm_{0}_{1}_val'.format(i+1, i2+1)).set(v2[1])
+
+    lock_parms(True)
+
+
+
+def save_backup_hip(node):
+    def generateReport():
+
+    # file = name of file
+    # dir = path to folder
+    # path = dir/file
+
+    parent = node.parent()
+
+    backup_dir = hou.getenv('HOUDINI_BACKUP_DIR')
+    if not backup_dir:
+        hip = hou.getenv('HIP')
+        backup_dir = util.fix_path(os.path.join(hip, 'backup'))
+        # hou.putenv('HOUDINI_BACKUP_DIR', backup_dir)
+
+    if not os.access(backup_dir, os.F_OK)
+        try:
+            os.makedirs(backup_dir)
+        except:
+            # ERROR
+            return
+
+    old_files = os.listdir(backup_dir)
+    hou.hipFile.save()
+    hou.hipFile.saveAsBackup()
+    new_files = os.listdir(backup_dir)
+
+    # delta = []
+    # for f in new_files:
+    #     if f not in old_files:
+    #         delta.append(f)
+
+    delta = [f for f in new_files if f not in old_files]
+
+    if len(delta) > 1:
+        # ERROR
+        return
+
+    new_backup_file = delta[0]
+    if not new_backup_file:
+        # ERROR
+        return
+
+    new_backup_path = util.fix_path(os.path.join(backup_dir, new_backup_file))
+
+    cache_path = node.evalParm('sopoutput')
+    _split = os.path.split(cache_path)
+    cache_dir = util.fix_path(_split[0])
+    cache_file = _split[1]
+    cache_name = cache_file.split('.')[0]
+
+    cache_hip_dir = os.path.join(cache_dir, 'cache_hips')
+
+    if not os.access(cache_hip_dir, os.F_OK):
+        try:
+            os.makedirs(cache_hip_dir)
+        except:
+            # ERROR
+            return
+
+    cache_hip_file = '{name}{ext}'.format(name=cache_name, ext=os.path.splitext(new_backup_file)[-1])
+    cache_hip_path = util.fix_path(os.path.join(cache_hip_dir, cache_hip_file))
+
+    try:
+        shutil.copy(new_backup_path, cache_hip_path)
+    except:
+        # ERROR
+        return
+
+    # PRINT
+
 
 def prerender(node):
     auto_version(node.parent())
+    save_backup_hip(node)
 
     return
 
