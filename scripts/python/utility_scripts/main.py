@@ -1,3 +1,5 @@
+import subprocess
+import os
 import hou
 
 
@@ -28,3 +30,12 @@ def print_report(header, *body):
         print('\t{0}'.format(b))
 
     print('-'*50)
+
+
+def open_explorer(path):
+    path = os.path.dirname(path)
+    path = fix_path(path, os.path.sep)
+
+    open_path = 'explorer {0}'.format(path)
+    subprocess.Popen(open_path, shell=True)
+    return

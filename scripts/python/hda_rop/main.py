@@ -1,3 +1,4 @@
+import datetime
 import hou
 import os
 import re
@@ -168,6 +169,11 @@ def watchlist_write():
     parent = node.parent()
     geo = node.geometry()
 
+    set_string_attrib('hipfile_path', parent.evalParm('hipfile_path'))
+    set_string_attrib('hipfile_date', parent.evalParm('hipfile_date'))
+    set_string_attrib('hipfile_project', parent.evalParm('hipfile_project'))
+    set_string_attrib('hipfile_source', parent.evalParm('hipfile_source'))
+    set_string_attrib('hipfile_error', parent.evalParm('hipfile_error'))
 
     watch_metadata = {}
     num_watch_nodes = parent.evalParm('watchlist_parms')
@@ -248,10 +254,83 @@ def watchlist_read(kwargs):
     lock_parms(True)
 
 
+def watchlist_restore_single(kwargs):
+    node = kwargs['node']
+    read_node = node.node('READ_METADATA')
+    geo = read_node.geometry()
+
+    watchlist = geo.attribValue('watchlist')
+    watchlist_dict = json.loads(watchlist)
+
+    parent_num = kwargs['script_multiparm_index2']
+    parent_parm = node.parm('read_watch_node_{0}'.format(parent_num))
+    parent_node = parent_parm.evalAsNode()
+
+    if not parent_node:
+        util.error('Node to restore to [{0}] does not exist'.format(parent_parm.evalAsString()))
+        return
+
+    parm_num = kwargs['script_multiparm_index']
+    parm = node.parm('read_watch_parm_{0}_{1}'.format(parent_num, parm_num))
+    parm_name = parm.eval()
+
+    parm_to_restore = parent_node.parm(parm_name)
+    if not parm_to_restore:
+        util.error('Parm to restore [{0}/{1}] does not exist'.format(parent_node.path(), parm_name))
+        return
+
+    vals = watchlist_dict[parent_node.path()][parm_name]
+
+    if vals[0] == '<< Animated Parameter >>':
+        util.error('This parm [{0}] is an Animated Parameter and cannot be restored this way'.format(parm_name),
+                   severity=hou.severityType.Warning)
+        return
+
+    try:
+        parm_to_restore.set(vals[0])
+        print('Parm [{0}/{1}] restored to [{2}]'.format(parent_node.path(), parm_name, vals[1]))
+    except TypeError:
+        parm_to_restore.set(vals[1])
+        print('Parm [{0}/{1}] restored to [{2}]'.format(parent_node.path(), parm_name, vals[1]))
+
+    return
+
+
 
 def save_backup_hip(node):
-    def generateReport():
+    def generateReport(success, **kwargs):
+        parent.parm('hipfile_path').set('None')
+        parent.parm('hipfile_date').set('None')
+        parent.parm('hipfile_error').set('None')
+        parent.parm('hipfile_project').set('None')
+        parent.parm('hipfile_source').set('None')
 
+
+        if success:
+            util.print_report(
+                'Scene Backup Report',
+                'Status: Successful',
+                'Scene File: {0}'.format(kwargs['scenefile']),
+                'Date Created: {0}'.format(kwargs['date'])
+            )
+            parent.parm('hipfile_path').set(kwargs['scenefile'])
+            parent.parm('hipfile_date').set(kwargs['date'])
+            parent.parm('hipfile_project').set(hou.getenv('PROJECT'))
+            parent.parm('hipfile_source').set(hou.hipFile.basename())
+
+        else:
+            util.print_report(
+                'Scene Backup Report',
+                'Status Failed',
+                'Error Log: {0}'.format(kwargs['error'])
+            )
+            parent.parm('hipfile_error').set(kwargs['error'])
+
+    def error_report(message, severity=hou.severityType.Error):
+        util.error(message, severity=severity)
+        generateReport(False, error=message)
+
+    ### Notes ###
     # file = name of file
     # dir = path to folder
     # path = dir/file
@@ -264,11 +343,11 @@ def save_backup_hip(node):
         backup_dir = util.fix_path(os.path.join(hip, 'backup'))
         # hou.putenv('HOUDINI_BACKUP_DIR', backup_dir)
 
-    if not os.access(backup_dir, os.F_OK)
+    if not os.access(backup_dir, os.F_OK):
         try:
             os.makedirs(backup_dir)
         except:
-            # ERROR
+            error_report('Unable to create backup directory')
             return
 
     old_files = os.listdir(backup_dir)
@@ -284,12 +363,12 @@ def save_backup_hip(node):
     delta = [f for f in new_files if f not in old_files]
 
     if len(delta) > 1:
-        # ERROR
+        error_report('Unable to link backup file')
         return
 
     new_backup_file = delta[0]
     if not new_backup_file:
-        # ERROR
+        error_report('Unable to link backup file')
         return
 
     new_backup_path = util.fix_path(os.path.join(backup_dir, new_backup_file))
@@ -306,7 +385,7 @@ def save_backup_hip(node):
         try:
             os.makedirs(cache_hip_dir)
         except:
-            # ERROR
+            error_report('Unable to create a directory for cache .hip files')
             return
 
     cache_hip_file = '{name}{ext}'.format(name=cache_name, ext=os.path.splitext(new_backup_file)[-1])
@@ -315,10 +394,33 @@ def save_backup_hip(node):
     try:
         shutil.copy(new_backup_path, cache_hip_path)
     except:
-        # ERROR
+        error_report('Unable to copy backup file to cache .hip file directory')
         return
 
-    # PRINT
+    date = datetime.datetime.now()
+    generateReport(True, scenefile=cache_hip_path, date=str(date))
+
+
+def hip_actions(action):
+    node = hou.pwd()
+
+    metadata_node = node.node('READ_METADATA')
+    hip_file = metadata_node.geometry().attribValue('hipfile_path')
+
+    if hip_file == '' or not hip_file:
+        return
+
+    if not os.access(hip_file, os.F_OK):
+        return
+
+    if action == 'open':
+        hou.hipFile.load(hip_file)
+
+    if action == 'explore':
+        util.open_explorer(hip_file)
+        pass
+
+    return
 
 
 def prerender(node):
