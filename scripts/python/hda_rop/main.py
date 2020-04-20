@@ -4,6 +4,8 @@ import os
 import re
 import json
 import shutil
+from save_scene import main as save_scene
+reload(save_scene)
 from utility_scripts import main as util
 reload(util)
 
@@ -155,7 +157,6 @@ def watchlist_action(kwargs):
         name_parm.set(parm.name())
 
     return
-
 
 
 def watchlist_write():
@@ -421,6 +422,49 @@ def hip_actions(action):
         pass
 
     return
+
+
+def restore(kwargs):
+    node = kwargs['node']
+
+    scene_data = None
+    for n in hou.node('/obj').children():
+        if n.type().nameComponents()[2] == 'scene_data':
+            scene_data = n
+            break
+    if not scene_data:
+        util.error('Scene Data node not found. Scene cannot be correctly restored')
+        return
+
+    if os.path.dirname(hou.hipFile.path()) == hou.getenv('SAVE_PATH'):
+        message = 'Current .hip already seems to be saved to \"working_files\" directory\n'\
+                  'Are you sure you want to perform this operation?'
+
+        choice = hou.ui.displayMessage(message, buttons=('Yes', 'No'), severity=hou.severityType.Warning)
+        if choice == 1:
+            return
+
+    try:
+        metadata = node.node('READ_METADATA').geometry().attribValue('hipfile_source')
+    except hou.OperationFailed:
+        util.error('Unable to find source file in metadata')
+        return
+
+    regex = r'(?P<scene>^\w+)-(?P<task>\w+)-(?P<ver>v\d{3,})(-(?P<desc>\w+))?-(?P<user>\w+)\.(?P<ext>hip\w*$)'
+    match = re.match(regex, metadata)
+    if not match:
+        util.error('Source does not align with correct naming convertion. \n'
+                   'Unable to restore file correctly')
+        return
+
+    task = match.group('task')
+    if not task or task == '':
+        util.error('Unable to find task name from metadata.\n'
+                   'Reverting to "restore" task name', severity=hou.severityType.Warning)
+        task = 'restore'
+
+    desc = 'restore'
+    save_scene.save_scene(None, task, desc)
 
 
 def prerender(node):
