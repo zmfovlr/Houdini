@@ -1,11 +1,12 @@
 HIP
 {
 C:/Users/user/Desktop/
-D:/Job/Study/Rebelway/Water/Week_2/
 D:/Job/Study/Rebelway/Python/scenes/week9/working_files/
 /Users/nosung/Desktop/
 D:/Job/Study/Rebelway/Python/scenes/Week_9/output/cache/cache_hips/
 D:/Job/Study/Rebelway/Python/scenes/Week_9/working_files/
+D:/Job/Study/Rebelway/Water/Week_3/
+D:/Job/Study/Rebelway/Water/Week_2/
 }
 GEO
 {
@@ -13,6 +14,7 @@ $HIP/rock_splash/assets/
 D:/Job/Study/Rebelway/Water/Week_2/cache/splash_flip_v01/
 D:/Job/Study/Rebelway/Water/Week_2/cache/splash_flip_v02/
 `chs("../
+$HIP/cache/whale_sim/
 }
 OTL
 {
@@ -22,4 +24,6 @@ C:/Users/user/Documents/houdini17.5/otls/
 MISC
 {
 `chs("../
+$HIP/assets/
+$HIP/cache/whale_sim/
 }

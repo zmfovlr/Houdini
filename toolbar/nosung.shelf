@@ -119,6 +119,7 @@ copy = hou.copyNodesTo(in_nodes, hou.node(subnet.path()))
     <memberTool name="folder_open"/>
     <memberTool name="reference_copy"/>
     <memberTool name="copy_to_read"/>
+    <memberTool name="tool_1"/>
     <memberTool name="manage_proj_class"/>
     <memberTool name="save_class"/>
   </toolshelf>

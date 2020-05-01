@@ -12,6 +12,15 @@ reload(save)
 save.save_scene(kwargs=kwargs)]]></script>
   </tool>
 
+  <tool name="tool_1" label="New Tool" icon="OBJ_switcher">
+    <script scriptType="python"><![CDATA[cur_mode = hou.updateModeSetting().name()
+
+if 'manual' == cur_mode.lower():
+    hou.setUpdateMode(hou.updateMode.AutoUpdate)
+else:
+    hou.setUpdateMode(hou.updateMode.Manual)]]></script>
+  </tool>
+
   <shelfSetEdit name="shelf_set_1" fileLocation="C:/PROGRA~1/SIDEEF~1/HOUDIN~1.425/houdini/toolbar/ShelfDefinitions.shelf">
     <addMemberToolshelf name="NS_Tool" inPosition="16"/>
   </shelfSetEdit>

@@ -1,6 +1,6 @@
 CreateBackups := 1;
 LeaveDefaultsUnchanged := 0;
-OperatorTypeBarMode := "fullmenu";
+OperatorTypeBarMode := "none";
 PreferIndexFile := 0;
 PreferInternal := 0;
 PreferLatestDate := 1;
